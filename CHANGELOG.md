@@ -1,8 +1,111 @@
-# v1.1.19 - TBD
+# v1.1.26 - TBD
+
+## Fixed
+
+- [#1563](https://github.com/hyperf/hyperf/pull/1563) Fixed crontab's `onOneServer` option not resetting mutex on shutdown
+
+# v1.1.25 - 2020-04-09
+
+## Fixed
+
+- [#1532](https://github.com/hyperf/hyperf/pull/1532) Fixed interface 'Symfony\Component\EventDispatcher\EventDispatcherInterface' not found.
+
+# v1.1.24 - 2020-04-09
 
 ## Added
 
-- [#1362](https://github.com/hyperf/hyperf/pull/1362) Added `getPoolNames()` for `Hyperf\Pool\SimplePool\PoolFactory`.
+- [#1501](https://github.com/hyperf/hyperf/pull/1501) Bridged Symfony command events to Hyperf event dispatcher.
+- [#1502](https://github.com/hyperf/hyperf/pull/1502) Added `maxAttempts` parameter for `Hyperf\AsyncQueue\Annotation\AsyncQueueMessage` annotation to control the maximum retry time of job.
+- [#1510](https://github.com/hyperf/hyperf/pull/1510) Added `Hyperf/Utils/CoordinatorManager` to better handling of graceful start and graceful stop.
+- [#1517](https://github.com/hyperf/hyperf/pull/1517) Added support lazy-loading over interface inheritance and abstract method inheritance etc.
+- [#1529](https://github.com/hyperf/hyperf/pull/1529) Handled SameSite property of response cookies.
+
+## Fixed
+
+- [#1494](https://github.com/hyperf/hyperf/pull/1494) Ignore `@mixin` annotation in redis component.
+- [#1499](https://github.com/hyperf/hyperf/pull/1499) Fixed dynamic parameter does not work after requiring translation for `hyperf/constants`.
+- [#1504](https://github.com/hyperf/hyperf/pull/1504) Fixed the proxy client of RPC does not handle the Nullable return type.
+- [#1507](https://github.com/hyperf/hyperf/pull/1507) Fixed consul catalog register method, modified to PUT from GET.
+
+# v1.1.23 - 2020-04-02
+
+## Added
+
+- [#1467](https://github.com/hyperf/hyperf/pull/1467) Added default configuration for filesystem component.
+- [#1469](https://github.com/hyperf/hyperf/pull/1469) Added method `getHandler()` for `Hyperf/Guzzle/HandlerStackFactory` and use `make()` function to create the handler instead of `new` operator when it is possible.
+- [#1480](https://github.com/hyperf/hyperf/pull/1480) RPC client will generate the methods of inherited interface automatically now.
+
+## Fixed
+
+- [#1471](https://github.com/hyperf/hyperf/pull/1471) Fixed data recved failed, when the body is larger than max-output-buffer-size.
+- [#1472](https://github.com/hyperf/hyperf/pull/1472) Fixed consume failed when publish message in consumer of NSQ.
+- [#1474](https://github.com/hyperf/hyperf/pull/1474) Fixed the consumer of NSQ will restart when requeue message.
+- [#1477](https://github.com/hyperf/hyperf/pull/1477) Fixed Invalid argument supplied for `Hyperf\Testing\Client::flushContext`.
+
+## Changed
+
+- [#1481](https://github.com/hyperf/hyperf/pull/1481) Creating message with `make` instead of `new` for `async-queue`.
+
+# v1.1.22 - 2020-03-26
+
+## Added
+
+- [#1440](https://github.com/hyperf/hyperf/pull/1440) Added config `enable` of every NSQ connection to control the consumer whether they start automatically.
+- [#1451](https://github.com/hyperf/hyperf/pull/1451) Added Filesystem component.
+- [#1459](https://github.com/hyperf/hyperf/pull/1459) Support macroable model, as laravel does.
+- [#1463](https://github.com/hyperf/hyperf/pull/1463) Added option `on_stats` for guzzle handler.
+
+## Fixed
+
+- [#1445](https://github.com/hyperf/hyperf/pull/1445) Fixed command describe:route missing variable route.
+- [#1449](https://github.com/hyperf/hyperf/pull/1449) Fixed memory overflow for high cardinality request path.
+- [#1454](https://github.com/hyperf/hyperf/pull/1454) Fixed `flatten()` failed, bacause `INF` is `float`.
+- [#1458](https://github.com/hyperf/hyperf/pull/1458) Fixed guzzle handler not support elasticsearch which version is larger than 7.0.
+
+## Changed
+
+- [#1452](https://github.com/hyperf/hyperf/pull/1452) Encourage the use of `\Hyperf\Redis\Redis` instead of `\Redis` because of [#938](https://github.com/hyperf/hyperf/issues/938).
+
+# v1.1.21 - 2020-03-19
+
+## Added
+
+- [#1393](https://github.com/hyperf/hyperf/pull/1393) Implemented more methods for `Hyperf\HttpMessage\Stream\SwooleStream`.
+- [#1419](https://github.com/hyperf/hyperf/pull/1419) Allow config fetcher to start in a coroutine instead of a process.
+- [#1424](https://github.com/hyperf/hyperf/pull/1424) Allow user modify the session_name by configuration file.
+- [#1435](https://github.com/hyperf/hyperf/pull/1435) Added config `use_default_value` for model-cache to correct the cache data with database data automatically.
+- [#1436](https://github.com/hyperf/hyperf/pull/1436) Added `isEnable()` for NSQ Consumer to control the consumer whether they start automatically.
+
+# v1.1.20 - 2020-03-12
+
+## Added
+
+- [#1402](https://github.com/hyperf/hyperf/pull/1402) Added `Hyperf\DbConnection\Annotation\Transactional` annotation to begin a transaction automatically.
+- [#1412](https://github.com/hyperf/hyperf/pull/1412) Added `Hyperf\View\RenderInterface::getContents()` method to get the contents of view render directly.
+- [#1416](https://github.com/hyperf/hyperf/pull/1416) Added Swoole event constant `ON_WORKER_ERROR`.
+
+## Fixed
+
+- [#1405](https://github.com/hyperf/hyperf/pull/1405) Fixed the cached attributes are not right, when the model has property `hidden`.
+- [#1410](https://github.com/hyperf/hyperf/pull/1410) Fixed tracer cannot trace the call chains of redis connection that created by `Hyperf\Redis\RedisFactory`.
+- [#1415](https://github.com/hyperf/hyperf/pull/1415) Fixed the bug that Aliyun acm client decode sts token failed when optional header `SecurityToken` is empty.
+
+# v1.1.19 - 2020-03-05
+
+## Added
+
+- [#1339](https://github.com/hyperf/hyperf/pull/1339) [#1394](https://github.com/hyperf/hyperf/pull/1394) Added `describe:routes` command to describe the routes information by command.
+- [#1354](https://github.com/hyperf/hyperf/pull/1354) Added ecs ram authorization for `config-aliyun-acm`.
+- [#1362](https://github.com/hyperf/hyperf/pull/1362) Added `getPoolNames()` method for `Hyperf\Pool\SimplePool\PoolFactory`.
+- [#1371](https://github.com/hyperf/hyperf/pull/1371) Added `Hyperf\DB\DB::connection()` to use the specified connection.
+
+## Changed
+
+- [#1384](https://github.com/hyperf/hyperf/pull/1384) Added option `property-case` for command `gen:model`.
+
+## Fixed
+
+- [#1386](https://github.com/hyperf/hyperf/pull/1386) Fixed variadic arguments do not work in async message annotation.
 
 # v1.1.18 - 2020-02-27
 
